@@ -9,8 +9,7 @@ class NavButtons extends Component {
   }
   
   handleClick(pathname) {
-    const {history} = this.props;
-    history.push(pathname);
+    this.props.dispatch({type: "PUSH", payload: pathname});
   }
   
   render() {

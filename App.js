@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Topic from "./Pages/Topic";
@@ -16,9 +16,19 @@ class App extends Component {
     dispatch({type: "SET_VEHICLE", payload: "Motorcycle"});
   }
   
+  componentDidUpdate() {
+    const {dispatch, redirect} = this.props;
+    if (redirect.path !== null) {
+      dispatch({type: "PUSH", payload: null});
+    }
+  }
+  
   render() {
+    const {path} = this.props.redirect;
+
     return (
       <div>
+        {path !== null && <Redirect push to={path} />}
         <NavButtons />
         <Switch>
           <Route exact path="/" component={Home} />

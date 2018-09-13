@@ -6,6 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import App from './App';
 import homeReducer from "./Reducers/HomeReducer";
 import aboutReducer from "./Reducers/AboutReducer";
+import redirectReducer from "./Reducers/RedirectReducer";
 import carMiddleware from "./Middleware/CarMiddleware";
 import monkeyMiddleware from "./Middleware/MonkeyMiddleware";
 
@@ -16,7 +17,8 @@ const middleware = applyMiddleware(
 
 const reducers = combineReducers({
   home: homeReducer,
-  about: aboutReducer
+  about: aboutReducer,
+  redirect: redirectReducer
 });
 
 const store = createStore(reducers, middleware);
