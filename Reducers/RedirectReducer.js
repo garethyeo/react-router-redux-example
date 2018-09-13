@@ -7,7 +7,7 @@ const redirectReducer = (state = initialState, action) => {
     case "PUSH":
       return {...state, path: action.payload};
     default:
-      return {...state, path: null};
+      return state;
   }
 }
 
